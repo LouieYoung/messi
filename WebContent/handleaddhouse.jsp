@@ -43,7 +43,7 @@ if(rs2.next())
 {
 	int a =rs2.getInt(1);
 	a+=1;
-	stmt3.executeUpdate("insert into houseresource(id_houseResource,id_lessor,rent,isRented,city,district,street,architechturalType,acreage,picture,evaluation) values('"+a+"','"+llid+"','"+price+"',0,'"+city+"','"+district+"','"+street+"','"+type+"','"+acreage+"','1.jpg',11)");
+	stmt3.executeUpdate("insert into houseresource(id_houseResource,id_lessor,rent,isRented,city,district,street,architechturalType,acreage,picture,evaluation,weight) values('"+a+"','"+llid+"','"+price+"',0,'"+city+"','"+district+"','"+street+"','"+type+"','"+acreage+"','1.jpg',11,1)");
 
 }
 %>
