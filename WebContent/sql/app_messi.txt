@@ -95,6 +95,7 @@ CREATE TABLE `lessor` (
   `password` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `state` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `personcard` bigint(20) NOT NULL,
   PRIMARY KEY (`id_lessor`),
@@ -106,8 +107,8 @@ CREATE TABLE `lessor` (
 -- ----------------------------
 -- Records of lessor
 -- ----------------------------
-INSERT INTO `lessor` VALUES ('1', 'fenghanxu', 'hit', '13836373933', '', 'china', '2344422244422');
-INSERT INTO `lessor` VALUES ('2', 'luyiyang', 'wh123', '', '', '', '0');
+INSERT INTO `lessor` VALUES ('1', 'fenghanxu', 'hit', '13836373933', '', '','china', '2344422244422');
+INSERT INTO `lessor` VALUES ('2', 'luyiyang', 'wh123', '', '','', '', '0');
 
 -- ----------------------------
 -- Table structure for `platformad`
@@ -180,11 +181,12 @@ CREATE TABLE `tenant` (
   `password` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `state` int(11) NOT NULL,
   PRIMARY KEY (`id_tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tenant
 -- ----------------------------
-INSERT INTO `tenant` VALUES ('1', 'fenghanxu', 'HITwh@2016', '', '');
-INSERT INTO `tenant` VALUES ('2', 'luyiyang', '1234', '', '');
+INSERT INTO `tenant` VALUES ('1', 'fenghanxu', 'HITwh@2016', '', '','');
+INSERT INTO `tenant` VALUES ('2', 'luyiyang', '1234', '', '','');
