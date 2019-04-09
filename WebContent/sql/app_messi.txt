@@ -1,0 +1,190 @@
+﻿/*
+Navicat MySQL Data Transfer
+
+Source Server         : Messi
+Source Server Version : 50640
+Source Host           : localhost:3308
+Source Database       : messi
+
+Target Server Type    : MYSQL
+Target Server Version : 50640
+File Encoding         : 65001
+
+Date: 2018-07-12 22:40:51
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `contract`
+-- ----------------------------
+DROP TABLE IF EXISTS `contract`;
+CREATE TABLE `contract` (
+  `id_contract` int(11) NOT NULL,
+  `t_name` varchar(45) DEFAULT NULL,
+  `t_phone` varchar(45) DEFAULT NULL,
+  `t_personcard` varchar(45) DEFAULT NULL,
+  `l_name` varchar(45) DEFAULT NULL,
+  `l_phone` varchar(45) DEFAULT NULL,
+  `l_personcard` varchar(45) DEFAULT NULL,
+  `id_reservation` int(11) NOT NULL,
+  `state` int(11) NOT NULL,
+  PRIMARY KEY (`id_contract`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of contract
+-- ----------------------------
+INSERT INTO `contract` VALUES ('1', 'hhhh', '114', '123', 'ddd', '116', '345', '0', '0');
+INSERT INTO `contract` VALUES ('2', 'fenghanxu', '2222', '1111', null, null, null, '0', '0');
+INSERT INTO `contract` VALUES ('3', 'fenghanxu', '555555', '4444', null, null, null, '0', '0');
+INSERT INTO `contract` VALUES ('4', 'fenghanxu', '', '', null, null, null, '0', '0');
+INSERT INTO `contract` VALUES ('5', 'fenghanxu', '', '', null, null, null, '0', '0');
+INSERT INTO `contract` VALUES ('6', 'fenghanxu', '44444', '123123', null, null, null, '0', '0');
+INSERT INTO `contract` VALUES ('7', 'fenghanxu', '110', 'feng', 'fenghanxu', '123213', '21312', '0', '0');
+INSERT INTO `contract` VALUES ('8', 'fenghanxu', '222', '111', 'fenghanxu', '444', '33', '3', '0');
+INSERT INTO `contract` VALUES ('9', 'fenghanxu', '22222', '11111', 'fenghanxu', '1111', '222', '4', '0');
+INSERT INTO `contract` VALUES ('10', 'fenghanxu', '3333', '111', 'fenghanxu', '4444', '22', '9', '0');
+INSERT INTO `contract` VALUES ('11', 'fenghanxu', '22', '22', 'fenghanxu', '11', '22222', '10', '0');
+INSERT INTO `contract` VALUES ('12', 'fenghanxu', '111', '222', 'fenghanxu', '33', '444444', '11', '0');
+INSERT INTO `contract` VALUES ('13', 'fenghanxu', '1111', '3333333333', 'fenghanxu', '111', '33333333', '12', '0');
+INSERT INTO `contract` VALUES ('14', 'fenghanxu', '33', '11111111', 'fenghanxu', '2222222222222', '3333', '13', '0');
+INSERT INTO `contract` VALUES ('15', 'fenghanxu', '222222222', '22222222', 'fenghanxu', '111111', '222222', '14', '0');
+INSERT INTO `contract` VALUES ('16', 'fenghanxu', '1222', '134789991', 'fenghanxu', '22', '111111', '15', '0');
+INSERT INTO `contract` VALUES ('17', 'fenghanxu', '231312', '33123', 'luyiyang', '222', '111', '5', '3');
+INSERT INTO `contract` VALUES ('18', 'fenghanxu', '123', '123', 'fenghanxu', '23123', '123123', '6', '3');
+INSERT INTO `contract` VALUES ('19', 'luyiyang', '1233', '1323', 'luyiyang', '222', '111', '7', '3');
+
+-- ----------------------------
+-- Table structure for `houseresource`
+-- ----------------------------
+DROP TABLE IF EXISTS `houseresource`;
+CREATE TABLE `houseresource` (
+  `id_houseResource` int(11) NOT NULL,
+  `id_lessor` int(11) NOT NULL,
+  `rent` double NOT NULL,
+  `isRented` tinyint(4) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `district` varchar(255) NOT NULL,
+  `street` varchar(255) NOT NULL,
+  `architechturalType` varchar(255) NOT NULL,
+  `acreage` double NOT NULL COMMENT '面积',
+  `picture` varchar(255) NOT NULL,
+  `evaluation` int(11) NOT NULL,
+  `weight` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_houseResource`),
+  KEY `id_lessor` (`id_lessor`),
+  CONSTRAINT `id_lessor` FOREIGN KEY (`id_lessor`) REFERENCES `lessor` (`id_lessor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of houseresource
+-- ----------------------------
+INSERT INTO `houseresource` VALUES ('1', '1', '1111', '1', 'weihai', 'huancui', 'wenhuaxilu', 'school', '4500', '1.jpg', '111','1');
+INSERT INTO `houseresource` VALUES ('2', '2', '8848', '1', 'beijing', 'zhaoyang', 'jiefanglu', 'villa', '6', '2.jpg', '3','1');
+INSERT INTO `houseresource` VALUES ('3', '1', '333', '2', 'ffff', 'sss', 'ghjj', 'sssfg', '663', '3.jpg', '3333','1');
+INSERT INTO `houseresource` VALUES ('4', '2', '222', '0', 'ff', 'ddd', 'gg', 'eddd', '33', '4.jpg', '245','1');
+
+-- ----------------------------
+-- Table structure for `lessor`
+-- ----------------------------
+DROP TABLE IF EXISTS `lessor`;
+CREATE TABLE `lessor` (
+  `id_lessor` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `personcard` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_lessor`),
+  KEY `name` (`name`),
+  KEY `id_lessor` (`id_lessor`,`name`),
+  KEY `name_2` (`name`,`id_lessor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of lessor
+-- ----------------------------
+INSERT INTO `lessor` VALUES ('1', 'fenghanxu', 'hit', '13836373933', '', 'china', '2344422244422');
+INSERT INTO `lessor` VALUES ('2', 'luyiyang', 'wh123', '', '', '', '0');
+
+-- ----------------------------
+-- Table structure for `platformad`
+-- ----------------------------
+DROP TABLE IF EXISTS `platformad`;
+CREATE TABLE `platformad` (
+  `id_platformad` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_platformad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of platformad
+-- ----------------------------
+INSERT INTO `platformad` VALUES ('1', 'fenghanxu', 'HITwh@2016', '', '');
+
+-- ----------------------------
+-- Table structure for `reservation`
+-- ----------------------------
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE `reservation` (
+  `id_reservation` int(11) NOT NULL,
+  `id_houseResource` int(11) NOT NULL,
+  `id_tenant` int(11) NOT NULL,
+  `state` int(11) NOT NULL,
+  PRIMARY KEY (`id_reservation`),
+  KEY `id_houseResource` (`id_houseResource`),
+  KEY `id_tenant` (`id_tenant`),
+  CONSTRAINT `id_houseResource` FOREIGN KEY (`id_houseResource`) REFERENCES `houseresource` (`id_houseResource`),
+  CONSTRAINT `id_tenant` FOREIGN KEY (`id_tenant`) REFERENCES `tenant` (`id_tenant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of reservation
+-- ----------------------------
+INSERT INTO `reservation` VALUES ('1', '1', '1', '2');
+INSERT INTO `reservation` VALUES ('2', '1', '2', '5');
+INSERT INTO `reservation` VALUES ('3', '2', '2', '5');
+INSERT INTO `reservation` VALUES ('5', '2', '1', '2');
+INSERT INTO `reservation` VALUES ('6', '3', '1', '3');
+
+-- ----------------------------
+-- Table structure for `systemad`
+-- ----------------------------
+DROP TABLE IF EXISTS `systemad`;
+CREATE TABLE `systemad` (
+  `systemad_id` int(11) NOT NULL,
+  `systemad_name` varchar(45) NOT NULL,
+  `systemad_password` varchar(45) NOT NULL,
+  PRIMARY KEY (`systemad_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of systemad
+-- ----------------------------
+INSERT INTO `systemad` VALUES ('1', 'fenghanxu', 'HITwh@2016');
+INSERT INTO `systemad` VALUES ('2', 'weijunqiu', '111');
+INSERT INTO `systemad` VALUES ('3', 'luyiyang', '333');
+
+-- ----------------------------
+-- Table structure for `tenant`
+-- ----------------------------
+DROP TABLE IF EXISTS `tenant`;
+CREATE TABLE `tenant` (
+  `id_tenant` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_tenant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tenant
+-- ----------------------------
+INSERT INTO `tenant` VALUES ('1', 'fenghanxu', 'HITwh@2016', '', '');
+INSERT INTO `tenant` VALUES ('2', 'luyiyang', '1234', '', '');
